@@ -1,0 +1,1 @@
+String userFirstJeans = myScanner.nextLine().toLowerCase();
