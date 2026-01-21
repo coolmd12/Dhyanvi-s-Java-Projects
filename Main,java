@@ -1,0 +1,63 @@
+/*
+Build a console-based Contact Management System where contacts are stored using a HashMap.
+Key → Phone Number (String)
+Value → Contact object (name, phone, email)
+🧠 What Student Must Design
+1️⃣ Contact Entity
+Ask the student to:
+Create a Contact class
+Store:
+Name
+Phone number
+Email ID
+Use private variables
+Use a constructor to initialize data
+2️⃣ Data Storage Logic
+Student should:
+Use a HashMap<String, Contact>
+Decide why phone number should be the key
+Prevent duplicate phone numbers
+3️⃣ Menu-Driven Program
+Student should:
+Display a menu repeatedly:
+Add contact
+Search contact
+Delete contact
+Exit
+*/
+
+import java.util.Scanner;
+import java.util.LinkedHashMap;
+import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner myScanner = new Scanner(System.in);
+
+        System.out.println("Hello, user! Please enter the number of contacts you would like to make for DContactPortal");
+        int userInputNum = myScanner.nextInt();
+        myScanner.nextLine(); // consume newline
+
+        LinkedHashMap<String, String> userContacts = new LinkedHashMap<>();
+
+        for (int i = 1; i <= userInputNum; i++) {
+
+            System.out.println("Please enter your contact "+i+"'s name: ");
+            String userContactName = myScanner.nextLine();
+            // myScanner.nextLine(); // consume newline
+
+            System.out.println("Please enter your contact "+i+"'s phone number/Email: ");
+            String userContactNumEmail = myScanner.nextLine();
+
+            userContacts.put(userContactNumEmail, userContactName);
+        }
+
+        System.out.println("\nSaved Contacts:");
+        for (String key : userContacts.keySet()) {
+            System.out.println("Name: " + userContacts.get(key) + ", Contact: " + key);
+        }
+
+        myScanner.close();
+    }
+}
