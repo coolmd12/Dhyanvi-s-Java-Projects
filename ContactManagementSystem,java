@@ -30,7 +30,7 @@ import java.util.Scanner;
 import java.util.LinkedHashMap;
 import java.util.HashMap;
 
-public class Main {
+public class ContactManagementSystem {
     public static void main(String[] args) {
 
         Scanner myScanner = new Scanner(System.in);
