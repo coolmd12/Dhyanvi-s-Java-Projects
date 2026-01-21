@@ -119,4 +119,71 @@ public class StudentGradingSystem {
         myScanner.close();
         System.out.println("All students processed. Program ended.");
     }
+
 }
+
+
+
+/*
+1️⃣ Student Grade Management System
+Concepts used:
+
+Variables, if-else
+
+Loops
+
+Features:
+
+Input student name and marks
+
+Calculate total & percentage
+
+Assign grade (A/B/C/Fail)
+
+👉 Extension: Handle multiple students using arrays
+*/
+
+import java.util.Scanner;
+import java.util.LinkedHashMap;
+
+public class StudentGradingSystem {
+    public static void main(String[] args) {
+
+        Scanner myScanner = new Scanner(System.in);
+
+        System.out.println("Hello, student. Please enter your name: ");
+        String studentName = myScanner.nextLine();
+
+        System.out.println("Welcome to the Student Grading System Portal, " + studentName);
+
+        System.out.println("Please enter 1 subject which you would like to calculate information about: ");
+        String subject = myScanner.nextLine();
+
+        System.out.println("For " + subject + ", please enter how many test scores you want to enter: ");
+        int testNum = myScanner.nextInt();
+
+        LinkedHashMap<String, Double> testScores = new LinkedHashMap<>();
+        double sumForAverage = 0.0;
+
+        for (int x = 1; x <= testNum; x++) {
+            System.out.println("Enter score for Test " + x + ": ");
+            double score = myScanner.nextDouble();
+
+            testScores.put("Test " + x, score);   // Store in HashMap
+            sumForAverage += score;
+        }
+
+        double average = sumForAverage / testNum;
+
+        System.out.println("\n----- Score Details -----");
+        for (String key : testScores.keySet()) {
+            System.out.println(key + " : " + testScores.get(key));
+        }
+
+        System.out.println("\nYour average grade (percentage) for " + subject + " is " + average);
+        System.out.println("Thank you! Enjoy your day!");
+
+        myScanner.close();
+    }
+}
+*/
