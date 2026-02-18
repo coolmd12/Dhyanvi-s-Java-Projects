@@ -1,0 +1,82 @@
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class ContactManagingSystem2.0 {
+
+    public static void main(String[] args) {
+
+        Scanner myScanner = new Scanner(System.in);
+
+        System.out.println("How many contacts you want to add?");
+        int userInputNum = myScanner.nextInt();
+        myScanner.nextLine(); // consume newline
+
+        HashMap<String, Contact> userContacts = new HashMap<>();
+
+        for (int i = 1; i <= userInputNum; i++) {
+
+            System.out.println("Enter contact " + i + " name:");
+            String name = myScanner.nextLine();
+
+            System.out.println("Enter phone and email separated by comma (phone,email):");
+            String input = myScanner.nextLine();
+
+            String[] parts = input.split(",");
+
+            if (parts.length != 2) {
+                System.out.println("Invalid format! Please use phone,email format.");
+                i--;
+                continue;
+            }
+
+            String phone = parts[0].trim();
+            String email = parts[1].trim();
+
+            if (userContacts.containsKey(phone)) {
+                System.out.println("Phone number already exists! Try again.");
+                i--;
+                continue;
+            }
+
+            Contact contact = new Contact(name, phone, email);
+            userContacts.put(phone, contact);
+        }
+
+        System.out.println("\nSaved Contacts:");
+        for (Contact contact : userContacts.values()) {
+            System.out.println("Name: " + contact.getName());
+            System.out.println("Phone: " + contact.getPhone());
+            System.out.println("Email: " + contact.getEmail());
+            System.out.println("------------------------");
+        }
+
+        myScanner.close();
+    }
+}
+
+
+// NOT public
+class Contact {
+
+    private String name;
+    private String phone;
+    private String email;
+
+    public Contact(String name, String phone, String email) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+}
